@@ -4,6 +4,7 @@ from django.urls import include, path
 from . import views
 from rest_framework.routers import DefaultRouter
 from restaurant import views
+from rest_framework.authtoken.views import obtain_auth_token
 # from .views import sayHello 
   
 router = DefaultRouter()
@@ -15,5 +16,6 @@ urlpatterns = [
     #add following lines to urlpatterns list 
     path('menu/', views.MenuItemsView.as_view()),
     path('menu/<int:pk>', views.SingleMenuItemView.as_view()),
-    path('restaurant/booking/', include(router.urls))
+    path('restaurant/booking/', include(router.urls)),
+    path('api-token-auth/', obtain_auth_token)
 ]
